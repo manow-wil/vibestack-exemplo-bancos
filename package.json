@@ -1,0 +1,13 @@
+{
+  "name": "vibestack-exemplo-bancos",
+  "private": true,
+  "type": "module",
+  "scripts": { "start": "node server.js" },
+  "dependencies": {
+    "mongodb": "6.21.0",
+    "mysql2": "3.24.6",
+    "pg": "8.23.1",
+    "redis": "4.7.1"
+  },
+  "engines": { "node": ">=20" }
+}
