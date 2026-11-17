@@ -49,6 +49,12 @@ const server = http.createServer(async (req, res) => {
     res.end(JSON.stringify({ error: "rota não encontrada" }));
     return;
   }
+  const envName = { "/pg": "PG_URL", "/mysql": "MYSQL_URL", "/mariadb": "MARIADB_URL", "/mongo": "MONGO_URL", "/redis": "REDIS_URL" }[path];
+  if (!process.env[envName]) {
+    res.statusCode = 500;
+    res.end(JSON.stringify({ error: `variável ${envName} não definida` }));
+    return;
+  }
   try {
     await check();
     res.end(JSON.stringify({ ok: 1 }));
